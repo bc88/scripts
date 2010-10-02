@@ -7,7 +7,8 @@ CON="Old IP: $3
 New IP: $2
 Mac: $1
 Type: $6
-Interface: $4"
+Interface: $4
+Tag: `grep $1 /etc/arpalert/tags | cut -f 2-10 -d ' '`"
 ICON=/usr/share/icons/gnome/scalable/actions/reload.svg
          ;;
     1)
@@ -21,7 +22,8 @@ MSG="New Mac Address Detected";
 CON="Mac: $1
 IP: $2
 Type: $6
-Interface: $4";
+Interface: $4
+Tag: `grep -i $1 /etc/arpalert/tags | cut -f 2-10 -d ' '`"
 ICON=/usr/share/icons/gnome/scalable/actions/add.svg
          ;;
     4)
@@ -36,18 +38,20 @@ CON="Offending IP: $2
 New Mac: $3
 Old Mac: $1
 Type $6
-Interface: $4"
+Interface: $4
+Tag: `grep -i $1 /etc/arpalert/tags | cut -f 2-10 -d ' '`"
 ICON=/usr/share/icons/gnome/scalable/status/important.svg
 
          ;;
     7)
-MSG="Mac Flood Detected";
+MSG="Arp Flood Detected";
 CON="Offending IP: $2
 Offending Mac: $1
 Target Mac: $3
 Type $6
-Interface: $4"
-ICON=/usr/share/icons/gnome/scalable/status/error.svg
+Interface: $4
+Tag: `grep -i $1 /etc/arpalert/tags | cut -f 2-10 -d ' '`"
+ICON=/usr/share/icons/gnome/scalable/status/stock_weather-showers.svg 
          ;;
     8)
 MSG="New Mac without IP";
@@ -57,18 +61,21 @@ MSG="IP Address Change Detected";
 CON="IP: $2
 Mac: $1
 Type: $6
-Interface: $4"
+Interface: $4
+Tag: `grep -i $1 /etc/arpalert/tags | cut -f 2-10 -d ' '`"
 ICON=/usr/share/icons/gnome/scalable/actions/reload.svg
 
          ;;
 esac
 if [ "$CON" = "" ]; then
-CON="$1: $MSG" "1: $1
+CON="$1: $MSG 
+1: $1
 2: $2
 3: $3
 4: $4
 5: $5
-6: $6" 
+6: $6
+Tag: `grep -i $1 /etc/arpalert/tags | cut -f 2-10 -d ' '`"
 ICON=/usr/share/icons/gnome/scalable/status/error.svg
 fi
 
