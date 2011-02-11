@@ -1,0 +1,32 @@
+all: xkyle.com.signed vpn.xkyle.com.signed n2n.xkyle.com.signed a.c.6.0.5.0.f.1.0.7.4.0.1.0.0.2.ip6.arpa.signed b.e.1.0.5.0.0.0.0.7.4.0.1.0.0.2.ip6.arpa.signed
+
+xkyle.com.signed : xkyle.com
+	named-checkzone xkyle.com xkyle.com
+	zonesigner xkyle.com
+	rndc reload
+	svn commit -m "Makefile Commit for xkyle.com"
+
+vpn.xkyle.com.signed : vpn.xkyle.com
+	named-checkzone vpn.xkyle.com vpn.xkyle.com
+	zonesigner vpn.xkyle.com
+	rndc reload
+	svn commit -m "Makefile Commit for vpn.xkyle.com"
+
+n2n.xkyle.com.signed : n2n.xkyle.com
+	named-checkzone n2n.xkyle.com n2n.xkyle.com
+	zonesigner n2n.xkyle.com
+	rndc reload
+	svn commit -m "Makefile Commit for n2n.xkyle.com"
+
+a.c.6.0.5.0.f.1.0.7.4.0.1.0.0.2.ip6.arpa.signed : a.c.6.0.5.0.f.1.0.7.4.0.1.0.0.2.ip6.arpa
+	named-checkzone a.c.6.0.5.0.f.1.0.7.4.0.1.0.0.2.ip6.arpa a.c.6.0.5.0.f.1.0.7.4.0.1.0.0.2.ip6.arpa
+	zonesigner a.c.6.0.5.0.f.1.0.7.4.0.1.0.0.2.ip6.arpa
+	rndc reload
+	svn commit -m "Makefile Commit for 2001:470:1f05:6ca"
+
+b.e.1.0.5.0.0.0.0.7.4.0.1.0.0.2.ip6.arpa.signed : b.e.1.0.5.0.0.0.0.7.4.0.1.0.0.2.ip6.arpa
+	named-checkzone b.e.1.0.5.0.0.0.0.7.4.0.1.0.0.2.ip6.arpa b.e.1.0.5.0.0.0.0.7.4.0.1.0.0.2.ip6.arpa
+	zonesigner b.e.1.0.5.0.0.0.0.7.4.0.1.0.0.2.ip6.arpa
+	rndc reload
+	svn commit -m "Makefile Commit for 2001:470:5:1eb::/64"
+
